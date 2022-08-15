@@ -1,15 +1,17 @@
 import express from 'express';
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 const app = express();
 const PORT = 3024;
+dotenv.config();
 
 app.use(
 	session({
 		resave: true,
 		saveUninitialized: true,
-		secret: 'werwyerusj234234hskjdfh',
+		secret: process.env.SESSION_SECRET
 	})
 );
 app.use(cookieParser());
